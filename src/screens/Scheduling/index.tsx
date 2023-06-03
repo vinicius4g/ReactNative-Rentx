@@ -1,6 +1,6 @@
 import React from 'react';
 import { StatusBar } from 'react-native';
-/* import { useNavigation } from '@react-navigation/native'; */
+import { useNavigation } from '@react-navigation/native';
 
 import { useTheme } from 'styled-components';
 
@@ -26,10 +26,10 @@ import {
 export function Scheduling() {
   const theme = useTheme();
 
-  /* const navigation = useNavigation(); */
+  const navigation = useNavigation();
 
   function handleConfirmRental() {
-    /* navigation.navigate('SchedulingDetails'); */
+    navigation.navigate('SchedulingDetails');
   }
 
   return (

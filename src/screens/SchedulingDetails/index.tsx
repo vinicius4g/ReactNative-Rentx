@@ -1,5 +1,5 @@
 import React from 'react';
-/* import { useNavigation } from '@react-navigation/native'; */
+import { useNavigation } from '@react-navigation/native';
 import { Feather } from '@expo/vector-icons';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { useTheme } from 'styled-components';
@@ -43,12 +43,12 @@ import {
 } from './styles';
 
 export function SchedulingDetails() {
-  /*   const navigation = useNavigation(); */
+  const navigation = useNavigation();
 
   const theme = useTheme();
 
   function handleCarDetails() {
-    /*  navigation.navigate('SchedulingComplete'); */
+    navigation.navigate('SchedulingComplete');
   }
 
   return (

@@ -1,6 +1,6 @@
 import React from 'react';
 import { StatusBar, useWindowDimensions } from 'react-native';
-/* import { useNavigation } from '@react-navigation/native'; */
+import { useNavigation } from '@react-navigation/native';
 
 import { ConfirmButton } from '../../components/ConfirmButton';
 
@@ -10,11 +10,11 @@ import DoneSvg from '../../assets/done.svg';
 import { Container, Content, Title, Message, Footer } from './styles';
 
 export function SchedulingComplete() {
-  /*  const navigation = useNavigation(); */
+  const navigation = useNavigation();
   const { width } = useWindowDimensions();
 
   function handleCarDetails() {
-    /*  navigation.navigate('Home') */
+    navigation.navigate('Home');
   }
 
   return (

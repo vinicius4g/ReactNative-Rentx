@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { StatusBar } from 'react-native';
-/* import { useNavigation } from '@react-navigation/native'; */
+import { useNavigation } from '@react-navigation/native';
 import { RFValue } from 'react-native-responsive-fontsize';
 
 import Logo from '../../assets/logo.svg';
@@ -17,7 +17,7 @@ import {
 import { Car } from '../../components/Car';
 
 export function Home() {
-  /*  const navigation = useNavigation(); */
+  const navigation = useNavigation();
 
   const carData = {
     brand: 'Audi',
@@ -30,7 +30,7 @@ export function Home() {
   };
 
   function handleCarDetails() {
-    /* navigation.navigate('CarDetails'); */
+    navigation.navigate('CarDetails');
   }
   /*
   async function fetchCars() {

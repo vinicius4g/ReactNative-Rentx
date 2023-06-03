@@ -1,5 +1,5 @@
 import React from 'react';
-import { RectButtonProps } from 'react-native-gesture-handler';
+import { TouchableOpacityProps } from 'react-native';
 
 import {
   Container,
@@ -26,7 +26,7 @@ interface ICarData {
   thumbnail: string;
 }
 
-interface IProps extends RectButtonProps {
+interface IProps extends TouchableOpacityProps {
   data: ICarData;
 }
 
