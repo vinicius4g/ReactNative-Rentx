@@ -45,9 +45,7 @@ export function CarDetails() {
 
       <CarImages>
         <ImageSlider
-          imagesUrl={[
-            'https://img1.gratispng.com/20171220/kiq/audi-png-car-image-5a3b1f1eb47de9.9104985015138240307393.jpg',
-          ]}
+          imagesUrl={['https://www.pngmart.com/files/1/Audi-RS5-Red-PNG.png']}
         />
       </CarImages>
 
