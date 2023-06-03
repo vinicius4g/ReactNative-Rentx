@@ -8,12 +8,10 @@ import { Car } from '../../components/Car';
 import Logo from '../../assets/logo.svg';
 import { api } from '../../services/api'; */
 
-import {
- Container
-} from './styles';
+import { Container } from './styles';
 
-export function Home(){
-    /* const navigation = useNavigation();
+export function Home() {
+  /* const navigation = useNavigation();
 
     const carData = {
         brand: 'Audi',
@@ -47,10 +45,9 @@ export function Home(){
         fetchCars()
     }, []) */
 
-
-    return (
-        <Container>
-            {/* <StatusBar 
+  return (
+    <Container>
+      {/* <StatusBar 
                 barStyle="light-content" 
                 backgroundColor="transparent"
                 translucent
@@ -71,8 +68,6 @@ export function Home(){
                 keyExtractor={item => String(item)}
                 renderItem={({ item }) =>  <Car data={carData} onPress={handleCarDetails} />}
             /> */}
-           
-           
-        </Container>
-    );
+    </Container>
+  );
 }

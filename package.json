@@ -9,9 +9,11 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "eslint-plugin-prettier": "^4.2.1",
     "expo": "~48.0.18",
     "expo-splash-screen": "~0.18.2",
     "expo-status-bar": "~1.4.4",
+    "prettier": "^2.8.8",
     "react": "18.2.0",
     "react-native": "0.71.8",
     "styled-components": "^5.3.11"
@@ -21,7 +23,20 @@
     "@types/react": "~18.0.27",
     "@types/react-native": "^0.72.2",
     "@types/styled-components-react-native": "^5.2.1",
-    "typescript": "^4.9.4"
+    "@typescript-eslint/eslint-plugin": "^5.59.8",
+    "@typescript-eslint/parser": "^5.59.8",
+    "eslint": "^8.42.0",
+    "eslint-plugin-react": "^7.32.2",
+    "typescript": "^4.9.4",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-standard-with-typescript": "^22.0.0",
+    "eslint-config-universe": "^11.1.0",
+    "eslint-config-with-prettier": "^6.0.0",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-n": "^15.0.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-promise": "^6.0.0",
+    "prettier": "^2.7.1"
   },
   "private": true
 }
