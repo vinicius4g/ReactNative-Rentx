@@ -1,5 +1,8 @@
 import React from 'react';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import {
+  createNativeStackNavigator,
+  NativeStackNavigationProp,
+} from '@react-navigation/native-stack';
 
 import { Home } from '../screens/Home';
 import { CarDetails } from '../screens/CarDetails';
@@ -7,7 +10,20 @@ import { Scheduling } from '../screens/Scheduling';
 import { SchedulingDetails } from '../screens/SchedulingDetails';
 import { SchedulingComplete } from '../screens/SchedulingComplete';
 
-const { Navigator, Screen } = createNativeStackNavigator();
+import { CarDTO } from '../dtos/CarDTO';
+
+export type RootStackParamList = {
+  Home: undefined;
+  CarDetails: { car: CarDTO };
+  Scheduling: undefined;
+  SchedulingDetails: undefined;
+  SchedulingComplete: undefined;
+};
+
+export type StackScreensNavigationProp =
+  NativeStackNavigationProp<RootStackParamList>;
+
+const { Navigator, Screen } = createNativeStackNavigator<RootStackParamList>();
 
 export function StackRoutes() {
   return (

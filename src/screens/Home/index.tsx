@@ -13,25 +13,16 @@ import { Car } from '../../components/Car';
 import { Load } from '../../components/Load';
 
 import { CarDTO } from '../../dtos/CarDTO';
+import { StackScreensNavigationProp } from '../../routes/stack.routes';
 
 export function Home() {
-  const navigation = useNavigation();
+  const navigation = useNavigation<StackScreensNavigationProp>();
 
   const [cars, setCars] = useState<CarDTO[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const carData = {
-    brand: 'Audi',
-    name: 'RS5 Coupé',
-    rent: {
-      period: 'Ao dia',
-      price: 120,
-    },
-    thumbnail: 'https://www.pngmart.com/files/1/Audi-RS5-Red-PNG.png',
-  };
-
-  function handleCarDetails() {
-    navigation.navigate('CarDetails');
+  function handleCarDetails(item: CarDTO) {
+    navigation.navigate('CarDetails', { car: item });
   }
 
   async function fetchCars() {
@@ -69,7 +60,7 @@ export function Home() {
           data={cars}
           keyExtractor={item => item.id}
           renderItem={({ item }) => (
-            <Car data={item} onPress={handleCarDetails} />
+            <Car data={item} onPress={() => handleCarDetails(item)} />
           )}
         />
       )}
