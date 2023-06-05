@@ -16,18 +16,10 @@ import {
 
 import GasolineSvg from '../../assets/gasoline.svg';
 
-interface ICarData {
-  brand: string;
-  name: string;
-  rent: {
-    period: string;
-    price: number;
-  };
-  thumbnail: string;
-}
+import { CarDTO } from '../../dtos/CarDTO';
 
 interface IProps extends TouchableOpacityProps {
-  data: ICarData;
+  data: CarDTO;
 }
 
 export function Car({ data, ...rest }: IProps) {
