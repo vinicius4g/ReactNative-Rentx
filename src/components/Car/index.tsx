@@ -14,15 +14,17 @@ import {
   CarImage,
 } from './styles';
 
-import GasolineSvg from '../../assets/gasoline.svg';
-
 import { CarDTO } from '../../dtos/CarDTO';
+
+import { getAccessoryIcon } from '../../utils/getAccessoryIcon';
 
 interface IProps extends TouchableOpacityProps {
   data: CarDTO;
 }
 
 export function Car({ data, ...rest }: IProps) {
+  const MotorIcon = getAccessoryIcon(data.fuel_type);
+
   return (
     <Container {...rest}>
       <Details>
@@ -35,7 +37,7 @@ export function Car({ data, ...rest }: IProps) {
             <Price>{data.rent.price}</Price>
           </Rent>
           <Type>
-            <GasolineSvg />
+            <MotorIcon />
           </Type>
         </About>
       </Details>
