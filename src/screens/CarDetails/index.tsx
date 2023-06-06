@@ -29,6 +29,7 @@ import {
 } from '../../routes/stack.routes';
 
 import { getAccessoryIcon } from '../../utils/getAccessoryIcon';
+import { CarDTO } from '../../dtos/carDTO';
 
 export function CarDetails() {
   const navigation = useNavigation<StackScreensNavigationProp>();
@@ -36,7 +37,7 @@ export function CarDetails() {
   const route = useRoute<RouteProp<RootStackParamList>>();
 
   function handleConfirmRental() {
-    navigation.navigate('Scheduling');
+    navigation.navigate('Scheduling', { car: route.params?.car as CarDTO });
   }
 
   function handleBack() {

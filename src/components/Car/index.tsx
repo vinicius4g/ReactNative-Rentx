@@ -14,7 +14,7 @@ import {
   CarImage,
 } from './styles';
 
-import { CarDTO } from '../../dtos/CarDTO';
+import { CarDTO } from '../../dtos/carDTO';
 
 import { getAccessoryIcon } from '../../utils/getAccessoryIcon';
 

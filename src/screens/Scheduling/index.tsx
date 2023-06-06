@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/consistent-type-assertions */
 import React, { useState } from 'react';
 import { StatusBar } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
+import { format } from 'date-fns';
 
 import { useTheme } from 'styled-components';
 
@@ -29,22 +30,39 @@ import {
   Footer,
 } from './styles';
 
-import { StackScreensNavigationProp } from '../../routes/stack.routes';
+import {
+  RootStackParamList,
+  StackScreensNavigationProp,
+} from '../../routes/stack.routes';
+import { getPlatformDate } from '../../utils/getPlatformDate';
+import { CarDTO } from '../../dtos/carDTO';
+
+interface IRentalPeriod {
+  startFormatted: string;
+  endFormatted: string;
+}
 
 export function Scheduling() {
   const theme = useTheme();
 
   const navigation = useNavigation<StackScreensNavigationProp>();
+  const route = useRoute<RouteProp<RootStackParamList>>();
 
-  const [markedDates, setMarkedDates] = useState<MarkedDatesProps>(
-    {} as MarkedDatesProps,
-  );
   const [lastSelectedDate, setLastSelectedDate] = useState<DayProps>(
     {} as DayProps,
   );
+  const [markedDates, setMarkedDates] = useState<MarkedDatesProps>(
+    {} as MarkedDatesProps,
+  );
+  const [rentalPeriod, setRentalPeriod] = useState<IRentalPeriod>(
+    {} as IRentalPeriod,
+  );
 
   function handleConfirmRental() {
-    navigation.navigate('SchedulingDetails');
+    navigation.navigate('SchedulingDetails', {
+      car: route.params?.car as CarDTO,
+      dates: Object.keys(markedDates),
+    });
   }
 
   function handleBack() {
@@ -64,6 +82,17 @@ export function Scheduling() {
 
     const interval = generateInterval(start, end);
     setMarkedDates(interval);
+
+    const firstDate = Object.keys(interval)[0];
+    const endDate = Object.keys(interval)[Object.keys(interval).length - 1];
+
+    setRentalPeriod({
+      startFormatted: format(
+        getPlatformDate(new Date(firstDate)),
+        'dd/MM/yyyy',
+      ),
+      endFormatted: format(getPlatformDate(new Date(endDate)), 'dd/MM/yyyy'),
+    });
   }
 
   return (
@@ -84,8 +113,8 @@ export function Scheduling() {
         <RentalPeriod>
           <DateInfo>
             <DateTitle>DE</DateTitle>
-            <DateValueContainer selected={false}>
-              <DateValue>18/06/2021</DateValue>
+            <DateValueContainer selected={!!rentalPeriod.startFormatted}>
+              <DateValue>{rentalPeriod.startFormatted}</DateValue>
             </DateValueContainer>
           </DateInfo>
 
@@ -93,8 +122,8 @@ export function Scheduling() {
 
           <DateInfo>
             <DateTitle>ATÉ</DateTitle>
-            <DateValueContainer selected={false}>
-              <DateValue>18/06/2021</DateValue>
+            <DateValueContainer selected={!!rentalPeriod.endFormatted}>
+              <DateValue>{rentalPeriod.endFormatted}</DateValue>
             </DateValueContainer>
           </DateInfo>
         </RentalPeriod>
@@ -105,7 +134,11 @@ export function Scheduling() {
       </Content>
 
       <Footer>
-        <Button title="Confirmar" onPress={handleConfirmRental} />
+        <Button
+          title="Confirmar"
+          onPress={handleConfirmRental}
+          enabled={!!rentalPeriod.startFormatted}
+        />
       </Footer>
     </Container>
   );

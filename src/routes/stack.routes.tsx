@@ -9,15 +9,17 @@ import { CarDetails } from '../screens/CarDetails';
 import { Scheduling } from '../screens/Scheduling';
 import { SchedulingDetails } from '../screens/SchedulingDetails';
 import { SchedulingComplete } from '../screens/SchedulingComplete';
+import { MyCars } from '../screens/MyCars';
 
-import { CarDTO } from '../dtos/CarDTO';
+import { CarDTO } from '../dtos/carDTO';
 
 export type RootStackParamList = {
   Home: undefined;
   CarDetails: { car: CarDTO };
-  Scheduling: undefined;
-  SchedulingDetails: undefined;
+  Scheduling: { car: CarDTO };
+  SchedulingDetails: { car: CarDTO; dates: string[] };
   SchedulingComplete: undefined;
+  MyCars: undefined;
 };
 
 export type StackScreensNavigationProp =
@@ -37,6 +39,7 @@ export function StackRoutes() {
       <Screen name="Scheduling" component={Scheduling} />
       <Screen name="SchedulingDetails" component={SchedulingDetails} />
       <Screen name="SchedulingComplete" component={SchedulingComplete} />
+      <Screen name="MyCars" component={MyCars} />
     </Navigator>
   );
 }
