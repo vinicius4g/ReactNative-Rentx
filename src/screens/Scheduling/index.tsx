@@ -35,7 +35,6 @@ import {
   StackScreensNavigationProp,
 } from '../../routes/stack.routes';
 import { getPlatformDate } from '../../utils/getPlatformDate';
-import { CarDTO } from '../../dtos/carDTO';
 
 interface IRentalPeriod {
   startFormatted: string;
@@ -46,7 +45,7 @@ export function Scheduling() {
   const theme = useTheme();
 
   const navigation = useNavigation<StackScreensNavigationProp>();
-  const route = useRoute<RouteProp<RootStackParamList>>();
+  const route = useRoute<RouteProp<RootStackParamList, 'Scheduling'>>();
 
   const [lastSelectedDate, setLastSelectedDate] = useState<DayProps>(
     {} as DayProps,
@@ -60,7 +59,7 @@ export function Scheduling() {
 
   function handleConfirmRental() {
     navigation.navigate('SchedulingDetails', {
-      car: route.params?.car as CarDTO,
+      car: route.params?.car,
       dates: Object.keys(markedDates),
     });
   }

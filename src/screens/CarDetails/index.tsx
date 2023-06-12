@@ -39,12 +39,12 @@ import {
 } from '../../routes/stack.routes';
 
 import { getAccessoryIcon } from '../../utils/getAccessoryIcon';
-import { CarDTO } from '../../dtos/carDTO';
 
 export function CarDetails() {
   const navigation = useNavigation<StackScreensNavigationProp>();
 
-  const route = useRoute<RouteProp<RootStackParamList>>();
+  const route = useRoute<RouteProp<RootStackParamList, 'CarDetails'>>();
+
   const theme = useTheme();
 
   const scrollY = useSharedValue(0);
@@ -71,7 +71,7 @@ export function CarDetails() {
   });
 
   function handleConfirmRental() {
-    navigation.navigate('Scheduling', { car: route.params?.car as CarDTO });
+    navigation.navigate('Scheduling', { car: route.params?.car });
   }
 
   function handleBack() {
@@ -99,7 +99,7 @@ export function CarDetails() {
 
         <Animated.View style={[sliderCarsStyleAnimation]}>
           <CarImages>
-            <ImageSlider imagesUrl={route.params?.car.photos as string[]} />
+            <ImageSlider imagesUrl={route.params?.car.photos} />
           </CarImages>
         </Animated.View>
       </Animated.View>

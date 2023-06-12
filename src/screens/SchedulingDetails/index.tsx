@@ -98,7 +98,11 @@ export function SchedulingDetails() {
         unavailable_dates,
       })
       .then(() => {
-        navigation.navigate('SchedulingComplete');
+        navigation.navigate('Confirmation', {
+          title: 'Carro alugado!',
+          message: `Agora vocẽ só precisa ir\naté a concessionária da RENTX\npegar o seu automóvel.`,
+          nextScreenRoute: 'Home',
+        });
       })
       .catch(() => {
         Alert.alert('Não foi possível confirmar o aluguel !');
