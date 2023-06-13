@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   StatusBar,
   KeyboardAvoidingView,
@@ -18,10 +18,10 @@ import theme from '../../styles/theme';
 
 import { useAuth } from '../../hooks/auth';
 
-import { StackScreensNavigationProp } from '../../routes/app.stack.routes';
+import { AuthStackScreensNavigationProp } from '../../routes/auth.routes';
 
 export function SignIn() {
-  const navigation = useNavigation<StackScreensNavigationProp>();
+  const navigation = useNavigation<AuthStackScreensNavigationProp>();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -40,7 +40,6 @@ export function SignIn() {
       await schema.validate({ email, password });
 
       signIn({ email, password });
-      /* navigation.navigate('Home'); */
     } catch (error) {
       if (error instanceof Yup.ValidationError)
         return Alert.alert('Opa', error.message);

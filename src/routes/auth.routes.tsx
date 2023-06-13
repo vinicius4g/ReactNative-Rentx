@@ -4,20 +4,13 @@ import {
   NativeStackNavigationProp,
 } from '@react-navigation/native-stack';
 
-import { Home } from '../screens/Home';
-import { CarDetails } from '../screens/CarDetails';
-import { Scheduling } from '../screens/Scheduling';
-import { SchedulingDetails } from '../screens/SchedulingDetails';
 import { Confirmation } from '../screens/Confirmation';
-import { MyCars } from '../screens/MyCars';
 import { Splash } from '../screens/Splash';
 import { SignIn } from '../screens/SignIn';
 import { SignUpFirstStep } from '../screens/SignUp/SignUpFirstStep';
 import { SignUpSecondStep } from '../screens/SignUp/SignUpSecondStep';
 
-import { CarDTO } from '../dtos/carDTO';
-
-export type RootStackParamList = {
+export type AuthRootStackParamList = {
   Splash: undefined;
   SignIn: undefined;
   SignUpFirstStep: undefined;
@@ -31,10 +24,11 @@ export type RootStackParamList = {
   };
 };
 
-export type StackScreensNavigationProp =
-  NativeStackNavigationProp<RootStackParamList>;
+export type AuthStackScreensNavigationProp =
+  NativeStackNavigationProp<AuthRootStackParamList>;
 
-const { Navigator, Screen } = createNativeStackNavigator<RootStackParamList>();
+const { Navigator, Screen } =
+  createNativeStackNavigator<AuthRootStackParamList>();
 
 export function AuthRoutes() {
   return (

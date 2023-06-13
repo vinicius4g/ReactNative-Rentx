@@ -3,14 +3,14 @@ import React, { useEffect, useState } from 'react';
 import { StatusBar, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { RFValue } from 'react-native-responsive-fontsize';
-import { Ionicons } from '@expo/vector-icons';
+/* import { Ionicons } from '@expo/vector-icons'; */
 import { useTheme } from 'styled-components/native';
 
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
 } from 'react-native-reanimated';
-import { PanGestureHandler } from 'react-native-gesture-handler';
+/* import { PanGestureHandler } from 'react-native-gesture-handler'; */
 
 import { api } from '../../services/api';
 
@@ -24,12 +24,12 @@ import { LoadAnimation } from '../../components/LoadAnimation';
 import { CarDTO } from '../../dtos/carDTO';
 import { StackScreensNavigationProp } from '../../routes/app.stack.routes';
 
-const ButtonAnimated = Animated.createAnimatedComponent(TouchableOpacity);
+/* const ButtonAnimated = Animated.createAnimatedComponent(TouchableOpacity); */
 
 export function Home() {
   const navigation = useNavigation<StackScreensNavigationProp>();
 
-  const theme = useTheme();
+  /* const theme = useTheme(); */
 
   const positionX = useSharedValue(0);
   const positionY = useSharedValue(0);
@@ -37,14 +37,14 @@ export function Home() {
   const [cars, setCars] = useState<CarDTO[]>([]);
   const [loading, setLoading] = useState(true);
 
-  const myCarsButtonStyle = useAnimatedStyle(() => {
+  /*   const myCarsButtonStyle = useAnimatedStyle(() => {
     return {
       transform: [
         { translateX: positionX.value },
         { translateY: positionY.value },
       ],
     };
-  });
+  }); */
 
   /*  const onGestureEvent = useAnimatedGestureHandler({
     onStart(_, ctx: any) {
@@ -66,23 +66,33 @@ export function Home() {
     navigation.navigate('CarDetails', { car: item });
   }
 
-  async function fetchCars() {
-    try {
-      const response = await api.get('/cars');
-      setCars(response.data);
-    } catch (error) {
-      console.log('error', error);
-    } finally {
-      setLoading(false);
-    }
-  }
-
-  function handleOpenMyCars() {
+  /*  function handleOpenMyCars() {
     navigation.navigate('MyCars');
-  }
+  } */
 
   useEffect(() => {
+    let isMounted = true;
+
+    async function fetchCars() {
+      try {
+        const response = await api.get('/cars');
+        if (isMounted) {
+          setCars(response.data);
+        }
+      } catch (error) {
+        console.log('error', error);
+      } finally {
+        if (isMounted) {
+          setLoading(false);
+        }
+      }
+    }
+
     fetchCars();
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   return (
