@@ -14,11 +14,17 @@ import {
   Archivo_600SemiBold,
 } from '@expo-google-fonts/archivo';
 
-import { StackRoutes } from './stack.routes';
+import { useAuth } from '../hooks/auth';
+
+import { AppStackRoutes } from './app.stack.routes';
+import { AppTabRoutes } from './app.tab.routes';
+import { AuthRoutes } from './auth.routes';
 
 SplashScreen.preventAutoHideAsync();
 
 export function Routes() {
+  const { user } = useAuth();
+
   const [fontsLoaded] = useFonts({
     Inter_400Regular,
     Inter_500Medium,
@@ -53,7 +59,7 @@ export function Routes() {
 
   return (
     <NavigationContainer onReady={onLayoutRootView}>
-      <StackRoutes />
+      {user ? <AppTabRoutes /> : <AuthRoutes />}
     </NavigationContainer>
   );
 }

@@ -42,7 +42,7 @@ import {
 import {
   RootStackParamList,
   StackScreensNavigationProp,
-} from '../../routes/stack.routes';
+} from '../../routes/app.stack.routes';
 
 import { getPlatformDate } from '../../utils/getPlatformDate';
 import { api } from '../../services/api';

@@ -9,7 +9,7 @@ import { CarDTO } from '../../dtos/carDTO';
 import { api } from '../../services/api';
 import { BackButton } from '../../components/BackButton';
 
-import { StackScreensNavigationProp } from '../../routes/stack.routes';
+import { StackScreensNavigationProp } from '../../routes/app.stack.routes';
 
 import {
   Container,

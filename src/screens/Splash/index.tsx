@@ -14,7 +14,7 @@ import { Container } from './styles';
 import BrandSvg from '../../assets/brand.svg';
 import LogoSvg from '../../assets/logo.svg';
 
-import { StackScreensNavigationProp } from '../../routes/stack.routes';
+import { StackScreensNavigationProp } from '../../routes/app.stack.routes';
 
 export function Splash() {
   const navigation = useNavigation<StackScreensNavigationProp>();
@@ -54,7 +54,7 @@ export function Splash() {
   });
 
   function navigateToApp() {
-    navigation.navigate('Home');
+    navigation.navigate('SignIn');
   }
 
   useEffect(() => {

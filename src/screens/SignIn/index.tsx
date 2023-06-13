@@ -15,13 +15,18 @@ import { Input } from '../../components/Input';
 import { InputPassword } from '../../components/InputPassword';
 
 import theme from '../../styles/theme';
-import { StackScreensNavigationProp } from '../../routes/stack.routes';
+
+import { useAuth } from '../../hooks/auth';
+
+import { StackScreensNavigationProp } from '../../routes/app.stack.routes';
 
 export function SignIn() {
   const navigation = useNavigation<StackScreensNavigationProp>();
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const { signIn } = useAuth();
 
   async function handleSignIn() {
     try {
@@ -34,7 +39,8 @@ export function SignIn() {
 
       await schema.validate({ email, password });
 
-      navigation.navigate('Home');
+      signIn({ email, password });
+      /* navigation.navigate('Home'); */
     } catch (error) {
       if (error instanceof Yup.ValidationError)
         return Alert.alert('Opa', error.message);

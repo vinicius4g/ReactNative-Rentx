@@ -7,7 +7,6 @@ import {
 } from 'react-native';
 import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { useTheme } from 'styled-components';
-import * as Yup from 'yup';
 
 import {
   Container,
@@ -22,12 +21,14 @@ import {
 import {
   StackScreensNavigationProp,
   RootStackParamList,
-} from '../../../routes/stack.routes';
+} from '../../../routes/app.stack.routes';
 
 import { BackButton } from '../../../components/BackButton';
 import { Bullet } from '../../../components/Bullet';
 import { Button } from '../../../components/Button';
 import { InputPassword } from '../../../components/InputPassword';
+
+import { api } from '../../../services/api';
 
 export function SignUpSecondStep() {
   const navigation = useNavigation<StackScreensNavigationProp>();
@@ -48,11 +49,25 @@ export function SignUpSecondStep() {
     if (password !== passwordConfirm)
       return Alert.alert('As senhas não conferem.');
 
-    navigation.navigate('Confirmation', {
-      title: 'Conta criada',
-      message: `Agora é só fazer login\ne aproveitar`,
-      nextScreenRoute: 'SignIn',
-    });
+    await api
+      .post('/users', {
+        name: route.params.user.name,
+        email: route.params.user.email,
+        driver_license: route.params.user.driverLicense,
+        password,
+      })
+      .then(() => {
+        navigation.navigate('Confirmation', {
+          title: 'Conta criada',
+          message: `Agora é só fazer login\ne aproveitar`,
+          nextScreenRoute: 'SignIn',
+        });
+      })
+      .catch(error => {
+        console.log(error);
+        console.log({ error: error.response.data });
+        Alert.alert('Opa', 'Não foi possível cadastrar');
+      });
   }
 
   return (

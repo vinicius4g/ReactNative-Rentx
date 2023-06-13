@@ -18,7 +18,7 @@ import {
   FormTitle,
 } from './styles';
 
-import { StackScreensNavigationProp } from '../../../routes/stack.routes';
+import { StackScreensNavigationProp } from '../../../routes/app.stack.routes';
 
 import { BackButton } from '../../../components/BackButton';
 import { Bullet } from '../../../components/Bullet';

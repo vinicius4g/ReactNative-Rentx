@@ -36,7 +36,7 @@ import {
 import {
   RootStackParamList,
   StackScreensNavigationProp,
-} from '../../routes/stack.routes';
+} from '../../routes/app.stack.routes';
 
 import { getAccessoryIcon } from '../../utils/getAccessoryIcon';
 
@@ -120,8 +120,8 @@ export function CarDetails() {
           </Description>
 
           <Rent>
-            <Period>{route.params?.car.rent.period}</Period>
-            <Price>{`R$ ${String(route.params?.car.rent.price)}`}</Price>
+            <Period>{route.params?.car.period}</Period>
+            <Price>{`R$ ${String(route.params?.car.price)}`}</Price>
           </Rent>
         </Details>
 

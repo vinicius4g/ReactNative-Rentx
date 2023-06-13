@@ -16,7 +16,7 @@ export const IconContainer = styled.View<Props>`
   width: 56px;
   justify-content: center;
   align-items: center;
-  background-color: ${({ theme }) => theme.colors.background_primary};
+  background-color: ${({ theme }) => theme.colors.background_secondary};
 
   margin-right: 2px;
 

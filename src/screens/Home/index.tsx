@@ -1,11 +1,6 @@
 /* eslint-disable @typescript-eslint/restrict-plus-operands */
 import React, { useEffect, useState } from 'react';
-import {
-  StatusBar,
-  StyleSheet,
-  TouchableOpacity,
-  BackHandler,
-} from 'react-native';
+import { StatusBar, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { Ionicons } from '@expo/vector-icons';
@@ -14,8 +9,6 @@ import { useTheme } from 'styled-components/native';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
-  useAnimatedGestureHandler,
-  withSpring,
 } from 'react-native-reanimated';
 import { PanGestureHandler } from 'react-native-gesture-handler';
 
@@ -29,7 +22,7 @@ import { Car } from '../../components/Car';
 import { LoadAnimation } from '../../components/LoadAnimation';
 
 import { CarDTO } from '../../dtos/carDTO';
-import { StackScreensNavigationProp } from '../../routes/stack.routes';
+import { StackScreensNavigationProp } from '../../routes/app.stack.routes';
 
 const ButtonAnimated = Animated.createAnimatedComponent(TouchableOpacity);
 
@@ -92,12 +85,6 @@ export function Home() {
     fetchCars();
   }, []);
 
-  useEffect(() => {
-    BackHandler.addEventListener('hardwareBackPress', () => {
-      return true;
-    });
-  }, []);
-
   return (
     <Container>
       <StatusBar
@@ -122,7 +109,7 @@ export function Home() {
           )}
         />
       )}
-      <PanGestureHandler>
+      {/*   <PanGestureHandler>
         <Animated.View
           style={[
             myCarsButtonStyle,
@@ -145,7 +132,7 @@ export function Home() {
             />
           </ButtonAnimated>
         </Animated.View>
-      </PanGestureHandler>
+      </PanGestureHandler> */}
     </Container>
   );
 }

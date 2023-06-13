@@ -11,7 +11,7 @@ import { Container, Content, Title, Message, Footer } from './styles';
 import {
   RootStackParamList,
   StackScreensNavigationProp,
-} from '../../routes/stack.routes';
+} from '../../routes/app.stack.routes';
 
 export function Confirmation() {
   const navigation = useNavigation<StackScreensNavigationProp>();
