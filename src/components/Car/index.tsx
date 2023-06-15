@@ -1,6 +1,8 @@
 import React from 'react';
 import { TouchableOpacityProps } from 'react-native';
 
+import { useNetInfo } from '@react-native-community/netinfo';
+
 import {
   Container,
   Details,
@@ -14,16 +16,18 @@ import {
   CarImage,
 } from './styles';
 
-import { CarDTO } from '../../dtos/carDTO';
+import { Car as ModelCar } from '../../database/model/Car';
 
 import { getAccessoryIcon } from '../../utils/getAccessoryIcon';
 
 interface IProps extends TouchableOpacityProps {
-  data: CarDTO;
+  data: ModelCar;
 }
 
 export function Car({ data, ...rest }: IProps) {
   const MotorIcon = getAccessoryIcon(data.fuel_type);
+
+  const netInfo = useNetInfo();
 
   return (
     <Container {...rest}>
@@ -34,7 +38,9 @@ export function Car({ data, ...rest }: IProps) {
         <About>
           <Rent>
             <Period>{data.period}</Period>
-            <Price>{data.price}</Price>
+            <Price>{`R$ ${
+              netInfo.isConnected === true ? String(data?.price) : '...'
+            }`}</Price>
           </Rent>
           <Type>
             <MotorIcon />
