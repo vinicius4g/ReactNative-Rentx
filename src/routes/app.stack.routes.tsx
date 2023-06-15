@@ -13,13 +13,11 @@ import { MyCars } from '../screens/MyCars';
 
 import { Car as ModelCar } from '../database/model/Car';
 
-import { CarDTO } from '../dtos/carDTO';
-
 export type RootStackParamList = {
   Home: undefined;
   CarDetails: { car: ModelCar };
-  Scheduling: { car: CarDTO };
-  SchedulingDetails: { car: CarDTO; dates: string[] };
+  Scheduling: { car: ModelCar };
+  SchedulingDetails: { car: ModelCar; dates: string[] };
   Confirmation: {
     title: string;
     message: string;
