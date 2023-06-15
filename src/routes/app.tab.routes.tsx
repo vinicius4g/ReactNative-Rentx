@@ -8,7 +8,6 @@ import { useTheme } from 'styled-components';
 
 import { AppStackRoutes } from './app.stack.routes';
 
-import { Home } from '../screens/Home';
 import { MyCars } from '../screens/MyCars';
 import { Profile } from '../screens/Profile';
 

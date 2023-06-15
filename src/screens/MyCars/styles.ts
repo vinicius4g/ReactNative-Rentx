@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 
-import { ICarProps } from '.';
+import { IDataProps } from '.';
 
 export const Container = styled.View`
   flex: 1;
@@ -64,7 +64,7 @@ export const AppointmentsQuantity = styled.Text`
   color: ${({ theme }) => theme.colors.title};
 `;
 
-export const CarList = styled(FlatList<ICarProps>).attrs({
+export const CarList = styled(FlatList<IDataProps>).attrs({
   showVerticalScrollIndicator: false,
 })``;
 
